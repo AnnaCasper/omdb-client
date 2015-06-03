@@ -1,22 +1,24 @@
-queryString.parse(url);
-
-var req = new XMLHttpRequest;
-var imdbArray = [];
-function findImdbId() {
-  for (var i = 0; i < response.Search.length; i++) {
-  imdbArray[i] = response.Search[i].imdbID
+function parseQueryString (queryString) {
+var splitUrl = {};
+    splitUrl = document.location.search
+    splitUrl = splitUrl.replace("?", "");
+    splitUrl = splitUrl.split("&");
+var imdbObject = {};
+  for (var i = 0; i < splitUrl.length; i++) {
+    var imdbId = splitUrl[i].split("=")
+      imdbObject[imdbId[0]] = imdbId[1];
   }
-  return imdbArray
+  console.log(imdbObject);
+  return imdbObject
 };
-
-
-var imdbId = imdbArray[i];
-var url = "http://www.omdbapi.com/?i=" + parseInt(imdbId);
-req.open('GET', url)
+var id = parseQueryString().i;
+var req = new XMLHttpRequest;
+var getUrl = "http://www.omdbapi.com/?i=" + id;
+req.open('GET', getUrl)
 req.addEventListener('load', function(){
   var response = JSON.parse(req.responseText);
   var h1 = document.createElement('h1');
   h1.innerHTML = response.Title
-  document.appendChild('h1');
+  document.body.appendChild(h1);
 });
 req.send(null);
