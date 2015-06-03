@@ -8,7 +8,6 @@ var imdbObject = {};
     var imdbId = splitUrl[i].split("=")
       imdbObject[imdbId[0]] = imdbId[1];
   }
-  console.log(imdbObject);
   return imdbObject
 };
 var id = parseQueryString().i;
@@ -17,8 +16,10 @@ var getUrl = "http://www.omdbapi.com/?i=" + id;
 req.open('GET', getUrl)
 req.addEventListener('load', function(){
   var response = JSON.parse(req.responseText);
-  var h1 = document.createElement('h1');
-  h1.innerHTML = response.Title
-  document.body.appendChild(h1);
+  for(var key in response) {
+    var h1 = document.createElement('h1');
+    h1.innerHTML = key + ": " + response[key]
+    document.body.appendChild(h1);
+  };
 });
 req.send(null);
