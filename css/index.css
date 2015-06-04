@@ -1,0 +1,45 @@
+body {
+  background-color: #95190C;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+  margin-top: 100px;
+}
+
+label {
+  color: #107E7D;
+  font-size: 48px
+}
+
+div.label {
+  background-color: #E3B505;
+}
+
+div {
+  margin-top: 20px;
+}
+
+input {
+  width: 400px;
+  height: 25px;
+}
+
+button {
+  width: 200px;
+  height: 40px;
+  background-color: #E3B505;
+  font-size: 14px;
+}
+
+h1 {
+  text-align: center;
+  color: #107E7D;
+}
+
+p {
+  height: 40px;
+  text-align: center;
+  background-color:#E3B505
+}
