@@ -23,7 +23,11 @@ req.addEventListener('load', function(){
         var h1 = document.createElement('h1')
         h1.innerHTML = response[key]
         document.body.appendChild(h1)
-      } else {
+      } else if (key === "Poster") {
+        var img = document.createElement('img')
+        img.src = response[key]
+        document.body.appendChild(img);
+      }  else {
         var p = document.createElement('p')
         p.innerHTML = key + ": " + response[key]
         document.body.appendChild(p);
