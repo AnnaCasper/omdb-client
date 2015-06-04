@@ -10,16 +10,24 @@ var imdbObject = {};
   }
   return imdbObject
 };
+
 var id = parseQueryString().i;
+
 var req = new XMLHttpRequest;
 var getUrl = "http://www.omdbapi.com/?i=" + id;
-req.open('GET', getUrl)
+req.open('GET', getUrl);
 req.addEventListener('load', function(){
   var response = JSON.parse(req.responseText);
-  for(var key in response) {
-    var h1 = document.createElement('h1');
-    h1.innerHTML = key + ": " + response[key]
-    document.body.appendChild(h1);
-  };
+    for (var key in response) {
+      if (key === "Title") {
+        var h1 = document.createElement('h1')
+        h1.innerHTML = response[key]
+        document.body.appendChild(h1)
+      } else {
+        var p = document.createElement('p')
+        p.innerHTML = key + ": " + response[key]
+        document.body.appendChild(p);
+      }
+    }
 });
 req.send(null);
