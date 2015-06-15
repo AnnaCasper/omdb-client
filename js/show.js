@@ -18,6 +18,8 @@ var getUrl = "http://www.omdbapi.com/?i=" + id;
 req.open('GET', getUrl);
 req.addEventListener('load', function(){
   var response = JSON.parse(req.responseText);
+  
+
     for (var key in response) {
       if (key === "Title") {
         var h1 = document.createElement('h1')

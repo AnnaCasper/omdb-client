@@ -9,10 +9,11 @@ button.addEventListener('click', function(){
   document.body.appendChild(h1);
 
   var xhr = new XMLHttpRequest;
+
   xhr.open('GET', 'http://www.omdbapi.com/?s=' + input);
+
   xhr.addEventListener('load', function(){
     var response = JSON.parse(xhr.responseText);
-
     for (var i = 0; i < response.Search.length; i++) {
       var a = document.createElement('a');
       a.innerHTML = "";
@@ -23,7 +24,8 @@ button.addEventListener('click', function(){
       var p = document.createElement('p');
       p.appendChild(a);
       document.body.appendChild(p);
-  };
-});
+    };
+  });
+
   xhr.send(null);
 });
